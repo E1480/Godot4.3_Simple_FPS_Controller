@@ -15,14 +15,14 @@ class_name Player extends CharacterBody3D
 # @export var UserInputRight : String = &"ui_right"
 
 @export var InputDictionary : Dictionary = {
-	"Forward": "",
-	"Backward": "",
-	"Left": "",
-	"Right": "",
-	"Jump": "",
-	"Escape": "",
-	"Sprint": "",
-	"Interact": ""
+	"Forward": "ui_up",
+	"Backward": "ui_down",
+	"Left": "ui_left",
+	"Right": "ui_right",
+	"Jump": "ui_accept",
+	"Escape": "ui_cancel",
+	"Sprint": "ui_accept",
+	"Interact": "ui_accept"
 }
 
 @export_category("Mouse Settings")
