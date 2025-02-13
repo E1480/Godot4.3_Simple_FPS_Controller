@@ -1,7 +1,20 @@
 class_name Player extends CharacterBody3D
 
 
-var InputDictionary : Dictionary = {
+
+@export_category("Player Settings")
+@export var Move_Speed : float = 1.5
+@export var Sprint_Speed : float = 10.0
+
+@export var PlayerInventory : Array[Dictionary] = []
+
+@export_category("Inputs")
+# @export var UserInputForward : String = &"ui_up"
+# @export var UserInputBackward : String = &"ui_down"
+# @export var UserInputLeft : String = &"ui_left"
+# @export var UserInputRight : String = &"ui_right"
+
+@export var InputDictionary : Dictionary = {
 	"Forward": "",
 	"Backward": "",
 	"Left": "",
@@ -11,17 +24,6 @@ var InputDictionary : Dictionary = {
 	"Sprint": "",
 	"Interact": ""
 }
-
-
-@export_category("Player Settings")
-@export var Move_Speed : float = 1.5
-@export var Sprint_Speed : float = 10.0
-
-# @export_category("Inputs")
-# @export var UserInputForward : String = &"ui_up"
-# @export var UserInputBackward : String = &"ui_down"
-# @export var UserInputLeft : String = &"ui_left"
-# @export var UserInputRight : String = &"ui_right"
 
 @export_category("Mouse Settings")
 @export_range(0.09, 0.1) var Mouse_Sens : float = 0.09
@@ -106,7 +108,7 @@ func Sprint() -> void:
 		_speed = lerp(_speed, Move_Speed, 0.1)
 
 func camera_tilt(delta: float) -> void:
-#	Camera Tilt
+	#	Camera Tilt
 	if Input.is_action_pressed(InputDictionary["Left"]) and Input.is_action_pressed(InputDictionary["Right"]):
 		camera.rotation.z = lerp_angle(camera.rotation.z, 0 , min(delta * 5.0,1.0))
 	elif Input.is_action_pressed(InputDictionary["Left"]):

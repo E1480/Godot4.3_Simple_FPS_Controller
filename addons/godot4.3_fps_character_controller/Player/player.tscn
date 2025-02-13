@@ -1,13 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4lccs8l5darl"]
+[gd_scene load_steps=6 format=3 uid="uid://c4lccs8l5darl"]
 
 [ext_resource type="Script" path="res://addons/godot4.3_fps_character_controller/Player/PlayerLogic.gd" id="1_0ewp1"]
 [ext_resource type="Script" path="res://addons/godot4.3_fps_character_controller/Player/player_inetractcast_logic.gd" id="2_dpr1a"]
+[ext_resource type="FontFile" uid="uid://6hflm8vkdjoo" path="res://addons/godot4.3_fps_character_controller/Player/Fonts/AmaticSC-Bold.ttf" id="3_8cn8c"]
+[ext_resource type="FontFile" uid="uid://h6o7nvdiwmhl" path="res://addons/godot4.3_fps_character_controller/Player/Fonts/AmaticSC-Regular.ttf" id="4_hqw2h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g5alh"]
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_0ewp1")
+InputDictionary = {
+"Backward": "Backward",
+"Escape": "Escape",
+"Forward": "Forward",
+"Interact": "interact",
+"Jump": "Jump",
+"Left": "Left",
+"Right": "Right",
+"Sprint": "Sprint"
+}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_g5alh")
@@ -39,19 +51,22 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="InteractLabel" type="RichTextLabel" parent="UserInterface/InteracrLabelHolder"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+layout_mode = 2
+offset_left = 561.0
+offset_top = 260.0
+offset_right = 591.0
+offset_bottom = 387.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("4_hqw2h")
+theme_override_fonts/bold_font = ExtResource("3_8cn8c")
+theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
-text = "[rainbow]Interact[/rainbow]"
+text = "="
 fit_content = true
 autowrap_mode = 0
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
