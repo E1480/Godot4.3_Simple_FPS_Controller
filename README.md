@@ -7,3 +7,6 @@ Features:
 - Sprint
 - Jump
 - Interact
+
+# License
+[MIT LICENSE](LICENSE)
