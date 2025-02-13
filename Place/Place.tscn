@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://w5e3dnhr7bjp"]
+
+[ext_resource type="PackedScene" uid="uid://c4lccs8l5darl" path="res://addons/godot4.3_fps_character_controller/Player/player.tscn" id="1_1kehb"]
+[ext_resource type="PackedScene" uid="uid://cxqnvcibk1uad" path="res://Place/TestInteract.tscn" id="2_rt0lb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h383e"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_energy_multiplier = 0.75
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_wuuue"]
+sky_material = SubResource("ProceduralSkyMaterial_h383e")
+
+[sub_resource type="Environment" id="Environment_npolt"]
+background_mode = 2
+sky = SubResource("Sky_wuuue")
+tonemap_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_6e01x"]
+
+[node name="Place" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_npolt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.4
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(20, 0.1, 20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
+mesh = SubResource("BoxMesh_6e01x")
+
+[node name="Player" parent="." instance=ExtResource("1_1kehb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38605, 1.05, -1.80816)
+Move_Speed = 3.0
+TiltThreshhold = 0.1
+
+[node name="TestInteract" parent="." instance=ExtResource("2_rt0lb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -3)

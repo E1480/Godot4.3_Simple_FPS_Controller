@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4lccs8l5darl"]
+
+[ext_resource type="Script" path="res://addons/godot4.3_fps_character_controller/Player/PlayerLogic.gd" id="1_0ewp1"]
+[ext_resource type="Script" path="res://addons/godot4.3_fps_character_controller/Player/player_inetractcast_logic.gd" id="2_dpr1a"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g5alh"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_0ewp1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_g5alh")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="PlayerInetractcast" type="RayCast3D" parent="Head" node_paths=PackedStringArray("Prompt")]
+target_position = Vector3(0, 0, -2)
+script = ExtResource("2_dpr1a")
+Prompt = NodePath("../../UserInterface/InteracrLabelHolder/InteractLabel")
+
+[node name="Tilt" type="Node3D" parent="."]
+
+[node name="LTilt" type="Marker3D" parent="Tilt"]
+
+[node name="RTilt" type="Marker3D" parent="Tilt"]
+
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="InteracrLabelHolder" type="Control" parent="UserInterface"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractLabel" type="RichTextLabel" parent="UserInterface/InteracrLabelHolder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[rainbow]Interact[/rainbow]"
+fit_content = true
+autowrap_mode = 0
